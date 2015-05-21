@@ -61,4 +61,48 @@ describe Hydra::Works::GenericWork do
     end
   end
 
+  describe 'aggregates generic_works that implement Hydra::Works' do
+    before do
+      class DummyIncWork < ActiveFedora::Base
+        include Hydra::Works::GenericWorkBehavior
+      end
+    end
+    after { Object.send(:remove_const, :DummyIncWork) }
+
+    describe '#new' do
+      it 'should pass validation' do
+        generic_work_new = DummyIncWork.new
+        expect( Hydra::Works.generic_work? generic_work_new ).to be true
+      end
+    end
+
+    describe '#create' do
+      it 'should pass validation' do
+        generic_work_create = DummyIncWork.create
+        expect( Hydra::Works.generic_work? generic_work_create ).to be true
+      end
+    end
+  end
+
+  describe 'aggregates generic_works that extend Hydra::Works' do
+    before do
+      class DummyExtWork < Hydra::Works::GenericWork
+      end
+    end
+    after { Object.send(:remove_const, :DummyExtWork) }
+
+    describe '#new' do
+      it 'should pass validation' do
+        generic_work_new = DummyExtWork.new
+        expect( Hydra::Works.generic_work? generic_work_new ).to be true
+      end
+    end
+
+    describe '#create' do
+      it 'should pass validation' do
+        generic_work_create = DummyExtWork.create
+        expect( Hydra::Works.generic_work? generic_work_create ).to be true
+      end
+    end
+  end
 end
