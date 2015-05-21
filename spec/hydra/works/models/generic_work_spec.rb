@@ -11,6 +11,20 @@ describe Hydra::Works::GenericWork do
 
   let(:pcdm_file1)       { Hydra::PCDM::File.new }
 
+  describe '#new' do
+    it 'should pass validation' do
+      generic_work_new = Hydra::Works::GenericWork.new
+      expect( Hydra::Works.generic_work? generic_work_new ).to be true
+    end
+  end
+
+  describe '#create' do
+    it 'should pass validation' do
+      generic_work_create = Hydra::Works::GenericWork.create
+      expect( Hydra::Works.generic_work? generic_work_create ).to be true
+    end
+  end
+
   describe '#generic_works=' do
     it 'should aggregate generic_works' do
       generic_work1.generic_works = [generic_work2, generic_work3]
