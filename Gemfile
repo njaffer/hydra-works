@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'activefedora-aggregation', github: 'projecthydra-labs/activefedora-aggregation', ref: '0dfe4f4'
-gem 'active-fedora', github: 'projecthydra/active_fedora', ref: 'caadc73'
+gem 'active-fedora', github: 'projecthydra/active_fedora', ref: '6c6f3e93'
 gem 'hydra-pcdm', github: 'projecthydra-labs/hydra-pcdm', ref: '11f46014'
 gem 'slop', '~> 3.6' # For byebug
 
